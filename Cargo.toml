@@ -1,0 +1,8 @@
+[package]
+name = "animated-alacritty"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+dirs = { version = "5.0.1", default-features = false }
+palette = { version = "0.7.1", default-features = false, features = ["std"] }
