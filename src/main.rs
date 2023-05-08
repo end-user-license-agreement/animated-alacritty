@@ -12,8 +12,15 @@ use {
 fn config_file() -> File {
     dirs::config_dir()
         .map(|dir| dir.join("alacritty/alacritty.yml"))
-        .and_then(|config| File::options().write(true).truncate(true).open(config).ok())
-        .unwrap_or_else(|| panic!("create alacritty.yml yourself"))
+        .and_then(|config| {
+            File::options()
+                .create(true)
+                .write(true)
+                .truncate(true)
+                .open(config)
+                .ok()
+        })
+        .unwrap_or_else(|| panic!("couldnt create alacritty config"))
 }
 
 fn rainbow_rgb(offset: f32) -> String {
